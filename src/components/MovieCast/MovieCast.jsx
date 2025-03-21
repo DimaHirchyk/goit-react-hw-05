@@ -23,6 +23,8 @@ export default function MovieCast() {
         setIsLoading(false);
       }
     }
+    if (!moviesId) return;
+
     getCast();
   }, [moviesId]);
 

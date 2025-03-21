@@ -23,6 +23,8 @@ export default function MovieReviews() {
         setIsLoading(false);
       }
     }
+    if (!moviesId) return;
+
     getRewies();
   }, [moviesId]);
   return (
