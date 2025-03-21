@@ -1,4 +1,6 @@
-export default function MovieInfo({ movie }) {
+import { Outlet } from "react-router-dom";
+
+export default function MovieDetail({ movie }) {
   return (
     <>
       <h1>{movie.original_title}</h1>
@@ -29,6 +31,15 @@ export default function MovieInfo({ movie }) {
             width={250}
             alt={company.name}
           />
+          <ul>
+            <li>
+              <NavLink to="cast">Cast</NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews">Reviews</NavLink>
+            </li>
+          </ul>
+          <Outlet />
         </div>
       ))}
     </>

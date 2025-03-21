@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { fetchSearchMovie } from "../../API";
+import MovieList from "../../components/MovieList/MovieList";
 
 export default function MoviePage() {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -13,6 +14,7 @@ export default function MoviePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const nextParams = new URLSearchParams(searchParams);
+
     nextParams.set("query", e.target.search.value.trim());
     setSearchParams(nextParams);
     e.target.reset();
@@ -26,7 +28,6 @@ export default function MoviePage() {
         setError(false);
         setIsLoading(true);
         const data = await fetchSearchMovie(query);
-        console.log(data);
         setMovie(data);
       } catch {
         setError(true);
@@ -51,17 +52,7 @@ export default function MoviePage() {
         />
         <button>Search</button>
       </form>
-      <ul>
-        {movie.length > 0 ? (
-          movie.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))
-        ) : (
-          <p>No results found.</p>
-        )}
-      </ul>
+      {movie && <MovieList movie={movie} />}
     </>
   );
 }

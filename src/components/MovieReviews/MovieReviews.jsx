@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchMovieRewiews } from "../../API";
 
 export default function MovieReviews() {
@@ -29,6 +29,7 @@ export default function MovieReviews() {
   }, [moviesId]);
   return (
     <div>
+      <Link to={`/movies/${moviesId}`}>Back</Link>
       {isLoading && <h2>Loading...</h2>}
       {error && <p>ERROR</p>}
       <ul>

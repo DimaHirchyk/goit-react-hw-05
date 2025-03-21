@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchMovieCredits } from "../../API";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function MovieCast() {
   const { moviesId } = useParams();
@@ -30,6 +30,7 @@ export default function MovieCast() {
 
   return (
     <>
+      <Link to={`/movies/${moviesId}`}>Back</Link>
       {isLoading && <h2>Loading...</h2>}
       {error && <p>ERROR</p>}
       {movie.cast ? (

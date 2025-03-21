@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../API";
-import MovieInfo from "../../components/MovieInfo/MovieInfo";
+import MovieDetail from "../../components/MovieDetail/MovieDetail";
 
-export default function MoviesPage() {
-  const { moviesId } = useParams();
+export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { moviesId } = useParams();
+
+  const backLink = useRef(location.state);
+  const location = useLocation();
 
   useEffect(() => {
     async function getMovie() {
@@ -28,20 +31,10 @@ export default function MoviesPage() {
 
   return (
     <>
+      <Link to={backLink.current ?? "/movies"}>Go back</Link>
       {isLoading && <h2>Loading...</h2>}
-      {movie && <MovieInfo movie={movie} />}
+      {movie && <MovieDetail movie={movie} />}
       {error && <p>ERROR</p>}
-
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
-
-      <Outlet />
     </>
   );
 }
