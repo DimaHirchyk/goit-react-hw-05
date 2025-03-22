@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchSearchMovie } from "../../API";
 import MovieList from "../../components/MovieList/MovieList";
+import css from "./MoviePage.module.css";
+import Loading from "../../components/Loading/Loading";
 
 export default function MoviePage() {
   const [movie, setMovie] = useState(null);
@@ -40,9 +42,9 @@ export default function MoviePage() {
 
   return (
     <>
-      {isLoading && <h2>Loading...</h2>}
+      {isLoading && <Loading />}
       {error && <p>ERROR</p>}
-      <form onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <input
           type="text"
           name="search"
@@ -50,7 +52,7 @@ export default function MoviePage() {
           autoFocus
           placeholder="Search movies"
         />
-        <button>Search</button>
+        <button className={css.btn}>Search</button>
       </form>
       {movie && <MovieList movie={movie} />}
     </>

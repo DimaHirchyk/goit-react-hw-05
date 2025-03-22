@@ -1,8 +1,14 @@
+import css from "./Paginatinon.module.css";
+
 export default function Paginatinon({ next, back }) {
   return (
-    <>
-      <button onClick={back}>Back</button>
-      <button onClick={next}>Next</button>
-    </>
+    <div className={css.btns}>
+      <button className={css.btn} onClick={back}>
+        Back
+      </button>
+      <button className={css.btn} onClick={next}>
+        Next
+      </button>
+    </div>
   );
 }

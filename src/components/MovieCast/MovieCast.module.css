@@ -1,0 +1,18 @@
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.iteam {
+  list-style: none;
+  text-align: center;
+  width: calc((100% - 75px) / 5);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 21px;
+  margin: 10px 0;
+}

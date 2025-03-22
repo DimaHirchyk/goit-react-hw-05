@@ -1,0 +1,84 @@
+.count {
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+p {
+  margin: 0;
+}
+
+.img {
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.img:hover {
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.text {
+  margin-left: 25px;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.overview {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.popularity {
+  font-weight: 400;
+  font-size: 17px;
+  margin: 10px 0;
+}
+
+.backdrop {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.backdrop_path {
+  display: block;
+  margin-inline: auto;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop_path:hover {
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
+}
+.created {
+  text-align: center;
+}
+.createdCompany {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.iteams {
+  padding: 10px 5px;
+  text-align: center;
+  list-style: none;
+  background-color: bisque;
+}
+
+.links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.link {
+  list-style-type: none;
+  text-decoration: none;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchMovieCredits } from "../../API";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const { moviesId } = useParams();
@@ -30,23 +31,26 @@ export default function MovieCast() {
 
   return (
     <>
-      <Link to={`/movies/${moviesId}`}>Back</Link>
       {isLoading && <h2>Loading...</h2>}
       {error && <p>ERROR</p>}
-      {movie.cast ? (
-        movie.cast.map((cost) => (
-          <div key={cost.id}>
-            <p>{cost.name}</p>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${cost.profile_path}`}
-              width={250}
-              alt={cost.name}
-            />
-          </div>
-        ))
-      ) : (
-        <p>No cast information available.</p>
-      )}
+      <ul className={css.cast}>
+        {movie.cast ? (
+          movie.cast.map((cost) => (
+            <li key={cost.id} className={css.iteam}>
+              <div>
+                <p className={css.name}>{cost.name}</p>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${cost.profile_path}`}
+                  width={250}
+                  alt={cost.name}
+                />
+              </div>
+            </li>
+          ))
+        ) : (
+          <p>No cast information available.</p>
+        )}
+      </ul>
     </>
   );
 }

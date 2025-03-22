@@ -1,0 +1,13 @@
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Закриває всю ширину екрану */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(174, 174, 174, 0.663);
+  font-weight: 800;
+  font-size: 30px;
+}
